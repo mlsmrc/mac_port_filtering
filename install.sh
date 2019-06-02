@@ -18,6 +18,6 @@ sudo chmod 644 /etc/pf.conf
 #######################################
 # start deamons
 
-sudo launchctl start -w /Library/LaunchDaemons/security.pf.plist
-sudo launchctl start -w /Library/LaunchDaemons/security.pflog0create.plist
-sudo launchctl start -w /Library/LaunchDaemons/security.pflog0dump.plist
+sudo launchctl load -w /Library/LaunchDaemons/security.pf.plist
+sudo launchctl load -w /Library/LaunchDaemons/security.pflog0create.plist
+sudo launchctl load -w /Library/LaunchDaemons/security.pflog0dump.plist

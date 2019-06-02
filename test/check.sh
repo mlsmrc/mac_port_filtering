@@ -16,7 +16,7 @@ function checkPorts()
 	
 		echo "### Checking port $port ###"
 		checkPort $port
-		[ $? -eq 1 ] && return 1
+		[ $? -eq 1 ] && echo "Error! " && return 1
 		
 		echo -e "### Check result: $rc ###\n\n"
 		
@@ -24,3 +24,5 @@ function checkPorts()
 }
 
 checkPorts $PORTS
+
+echo "Tests completed successfully!"
