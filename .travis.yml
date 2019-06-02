@@ -1,0 +1,32 @@
+os: osx
+language: generic
+sudo: true
+
+addons:
+  homebrew:
+    packages:
+    - coreutils
+
+install:
+- sudo mkdir -p /Library/LaunchDaemons/
+- sudo mv pf/pf.conf /etc/pf.conf
+- sudo mv pf/security.pf.plist /Library/LaunchDaemons/security.pf.plist
+- sudo mv pf/security.pflog0create.plist /Library/LaunchDaemons/security.pflog0create.plist
+- sudo mv pf/security.pflog0dump.plist /Library/LaunchDaemons/security.pflog0dump.plist
+
+#######################################
+# Set permission to pf.conf
+
+- sudo chmod 644 /etc/pf.conf 
+
+#######################################
+# start deamons
+
+- sudo touch /var/log/pffirewall.log
+- sudo /sbin/ifconfig pflog0 create
+- sudo /sbin/pfctl -E -f /etc/pf.conf
+# - sudo /usr/sbin/tcpdump -i pflog0 -w /var/log/pffirewall.log
+
+script:
+# coreutils for gtimeout command
+- bash ./check.sh
