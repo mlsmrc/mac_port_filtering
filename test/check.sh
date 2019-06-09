@@ -4,7 +4,7 @@ PORTS="21,22,23,137,138,139,445,548,1900,3283,3659,4488,5800,5900,5988"
 
 function checkPort()
 {
-	gtimeout 5 nc -vz localhost $1	
+	gtimeout 2 nc -vz localhost $1	
 	
 	[ $? -ne 0 ] && return 0 || return 1
 }
